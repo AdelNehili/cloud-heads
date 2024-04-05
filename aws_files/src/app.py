@@ -25,7 +25,6 @@ def display_root():
         description: The result of the addition
     """
     # HTML content with a button to navigate to the Swagger UI documentation
-    return "Hello lolo"
     return render_template('index.html')
 
 @app.route('/sum')

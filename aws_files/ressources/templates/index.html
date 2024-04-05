@@ -1,12 +1,21 @@
 <html>
     <head>
         <title>Flask App</title>
+        <script type="text/javascript">
+            function goToAPIDocs() {
+                window.location.href = window.location.origin + '/apidocs/#/';
+            }
+        </script>
+        
     </head>
     <body>
         <h1>Welcome to the Flask App</h1>
         <p>Use the button below to navigate to the API documentation.</p>
-        <form action="http://localhost:9000/apidocs/#/">
-            <input type="submit" value="Go to API Docs" />
-        </form>
+        <button onclick="goToAPIDocs()">Go to API Docs</button>
+
+        <!-- Using a button with JavaScript to handle navigation -->
+        <button onclick="window.location.href = '/apidocs/'">Go to API Docs Docs</button>
     </body>
+
 </html>
+
