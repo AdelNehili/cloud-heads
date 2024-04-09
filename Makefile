@@ -5,14 +5,15 @@ CONTAINER_PORT=5000
 
 # EC2 Infos
 PEM_FILENAME = labsuser
-PUBLIC_IP_ADDRESS = 44.220.146.68
+PUBLIC_IP_ADDRESS = 34.229.152.146
 
 test:
 	sudo cp $(PEM_FILENAME).pem ~/$(PEM_FILENAME).pem
 	sudo chmod 400 ~/$(PEM_FILENAME).pem
-	scp -i ~/$(PEM_FILENAME).pem ./aws_files/src/* ec2-user@$(PUBLIC_IP_ADDRESS):~/
-	scp -i ~/$(PEM_FILENAME).pem -r ./aws_files/ressources/templates/* ec2-user@$(PUBLIC_IP_ADDRESS):~/templates
-	ssh -i ~/$(PEM_FILENAME).pem ec2-user@$(PUBLIC_IP_ADDRESS)
+	sudo scp -i ~/$(PEM_FILENAME).pem ./aws_files/src/* ec2-user@$(PUBLIC_IP_ADDRESS):~/
+	sudo ssh -i ~/$(PEM_FILENAME).pem ec2-user@$(PUBLIC_IP_ADDRESS) "mkdir -p ~/templates"
+	sudo scp -i ~/$(PEM_FILENAME).pem -r ./aws_files/ressources/templates/* ec2-user@$(PUBLIC_IP_ADDRESS):~/templates/
+	sudo ssh -i ~/$(PEM_FILENAME).pem ec2-user@$(PUBLIC_IP_ADDRESS)
 
 
 run_docker_local:
