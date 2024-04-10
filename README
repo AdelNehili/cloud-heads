@@ -1,0 +1,25 @@
+I) Verification des ports
+    1) S'assurer que le code Flask utilise le port 5000 (port par défault)
+    2) S'assurer que le docker,contenant app.py, expose le port 5000
+    3) S'assurer que le deployment,contenant l'image du docker, communique avec le port 5000
+    4) S'assurer que le service LoadBalancer, écoute le port 80 (port web par défault) et communique avec le port 5000
+
+II) Verification de minikube
+    1) Installer minikube : ./temp/bash_install_k8s.sh
+    2) Build le docker et le load sur minikube: ./bash_test_kubectl.sh load
+        2.1) Vérifier que environnement minikube a bien notre docker image (en une ligne de commande): minikube ssh -- "docker images"
+        2.1.1) Ou manuellement en se connectant au terminal minikube: minikube ssh
+        2.1.2) et en affichant les images : docker images
+        
+
+    3) Activer minikube : minikube start
+    4) Sur un AUTRE TERMINAL, activer le tunnel permettant au LoadBalancer de passer à la page web : minikube tunnel
+        4.1) BIEN VERIFIER que le tunnel ne demande plus d'accès admin (demande le mot de passe)
+    
+III) Lancer le deployment/service
+    1) Appliquer les infos .yaml au kubernete : ./bash_test_kubectl.sh deploy
+    2) Attendre que les pods soient prêts : ./bash_displayer.sh
+    3) Tester sur localhost/80
+
+IV) Bonus:
+    1) Si tunnel est toujours actif, run : minikube dashboard 
