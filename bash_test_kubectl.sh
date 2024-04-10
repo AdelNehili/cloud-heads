@@ -18,19 +18,18 @@ if [ "$1" = "clear" ]; then
     kubectl delete service nginx-service
 fi
 
-if [ "$1" = "deploy" ]; then
-#    kubectl apply -f my_deployment.yaml
-#    kubectl apply -f my_service.yaml
-
-    kubectl apply -f nginx-deployment.yaml
-    kubectl apply -f nginx-service.yaml
-fi
-
 if [ "$1" = "load" ]; then
     IMAGE_NAME=test_yaml:latest
     docker build -t $IMAGE_NAME -f ./flask_project/src/Dockerfile ./flask_project/src
     minikube image load $IMAGE_NAME
 fi
+
+if [ "$1" = "deploy" ]; then
+    kubectl apply -f nginx-deployment.yaml
+    kubectl apply -f nginx-service.yaml
+fi
+
+
 
 echo "Done."
 # Start Minikube tunnel in the background :
