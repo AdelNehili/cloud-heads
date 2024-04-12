@@ -1,0 +1,2 @@
+-Comment ça se fait que chaque pods ecoutent le MEME port (5000)? Comment kubernete gère tout ça
+-Est ce qu'on peut changer le container des pods sans devoir changer l'architecture? Hehee non :') [test de 20 minutes de l'apprendre :)]

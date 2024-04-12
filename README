@@ -4,7 +4,7 @@ I) Verification des ports
     3) S'assurer que le deployment,contenant l'image du docker, communique avec le port 5000
     4) S'assurer que le service LoadBalancer, écoute le port 80 (port web par défault) et communique avec le port 5000
 
-II) Verification de minikube
+II) Verification de minikube (Le mini "environnement" permettant de run un kubernete facilement)
     1) Installer minikube : ./temp/bash_install_k8s.sh
     2) Build le docker et le load sur minikube: ./bash_test_kubectl.sh load
         2.1) Vérifier que environnement minikube a bien notre docker image (en une ligne de commande): minikube ssh -- "docker images"

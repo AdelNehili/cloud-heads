@@ -2,8 +2,6 @@
 
 # Check if the first argument is "rst" to reset the environment
 if [ "$1" = "rst" ]; then
-    kubectl delete deployment test-yaml-deployment
-    kubectl delete service test-yaml-service
     minikube stop
     minikube delete
     minikube start
@@ -20,7 +18,8 @@ fi
 
 if [ "$1" = "load" ]; then
     IMAGE_NAME=test_yaml:latest
-    docker build -t $IMAGE_NAME -f ./flask_project/src/Dockerfile ./flask_project/src
+    docker build -t $IMAGE_NAME -f ./V1_flask_project/src/Dockerfile ./V1_flask_project/src
+    echo "minikube image loading..."
     minikube image load $IMAGE_NAME
 fi
 
