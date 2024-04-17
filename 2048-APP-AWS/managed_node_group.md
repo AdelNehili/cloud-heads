@@ -1,7 +1,8 @@
 # Prequisite
 1. download awscli, ekstctl, kubectl, helm 
-2. create an IAM access ID/Key pair on your IAM profile (using root privilege is ok but not recommended)
-3. configure you awscli by running the ```aws configure```
+2. create a free tier aws account
+3. create an IAM access ID/Key pair on your IAM profile (using root privilege is ok but not recommended)
+4. configure you awscli by running the ```aws configure```
 
 # Create a cluster with 2 nodes
 
