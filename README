@@ -1,25 +1,24 @@
-I) Verification des ports
-    1) S'assurer que le code Flask utilise le port 5000 (port par défault)
-    2) S'assurer que le docker,contenant app.py, expose le port 5000
-    3) S'assurer que le deployment,contenant l'image du docker, communique avec le port 5000
-    4) S'assurer que le service LoadBalancer, écoute le port 80 (port web par défault) et communique avec le port 5000
+Minikube section:
+1. Port Verification
+    1. Ensure that the Flask code uses port 5000 (default port).
+    2. Ensure that the Docker container, containing app.py, exposes port 5000.
+    3. Ensure that the deployment, containing the Docker image, communicates through port 5000.
+    4. Ensure that the LoadBalancer service listens on port 80 (default web port) and communicates with port 5000.
 
-II) Verification de minikube (Le mini "environnement" permettant de run un kubernete facilement)
-    1) Installer minikube : ./temp/bash_install_k8s.sh
-    2) Build le docker et le load sur minikube: ./bash_test_kubectl.sh load
-        2.1) Vérifier que environnement minikube a bien notre docker image (en une ligne de commande): minikube ssh -- "docker images"
-        2.1.1) Ou manuellement en se connectant au terminal minikube: minikube ssh
-        2.1.2) et en affichant les images : docker images
-        
+2. Verification of Minikube (The mini "environment" that allows easy Kubernetes running)
+    1. Install Minikube: `./temp/bash_install_k8s.sh`
+    2. Build the Docker and load it onto Minikube: `./bash_test_kubectl.sh load`
+        2.1. Verify that the Minikube environment has our Docker image (in one command line): `minikube ssh -- "docker images"`
+            2.1.1. Or manually by connecting to the Minikube terminal: `minikube ssh`
+            2.1.2. And displaying the images: `docker images`
+    3. Activate Minikube: `minikube start`
+    4. On ANOTHER TERMINAL, activate the tunnel allowing the LoadBalancer to access the web page: `minikube tunnel`
+        4.1. Make SURE that the tunnel no longer requires admin access (asks for the password).
 
-    3) Activer minikube : minikube start
-    4) Sur un AUTRE TERMINAL, activer le tunnel permettant au LoadBalancer de passer à la page web : minikube tunnel
-        4.1) BIEN VERIFIER que le tunnel ne demande plus d'accès admin (demande le mot de passe)
-    
-III) Lancer le deployment/service
-    1) Appliquer les infos .yaml au kubernete : ./bash_test_kubectl.sh deploy
-    2) Attendre que les pods soient prêts : ./bash_displayer.sh
-    3) Tester sur localhost/80
+3. Launch the deployment/service
+    1. Apply the .yaml info to Kubernetes: `./bash_test_kubectl.sh deploy`
+    2. Wait for the pods to be ready: `./bash_displayer.sh`
+    3. Test on localhost/80
 
-IV) Bonus:
-    1) Si tunnel est toujours actif, run : minikube dashboard 
+4. Bonus:
+    1. If the tunnel is still active, run: `minikube dashboard`
