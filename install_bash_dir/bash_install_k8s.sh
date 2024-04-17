@@ -7,7 +7,4 @@ if [ "$1" = "install" ]; then
     chmod +x minikube
     sudo mv minikube /usr/local/bin/
     minikube start --driver=docker
-elif [ "$1" = "rst" ]; then
-    minikube start
-    minikube dashboard
 fi
