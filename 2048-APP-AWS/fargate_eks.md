@@ -85,11 +85,15 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n ku
 --set region=eu-west-3 \
 --set vpcId=
 
+# Wait a bit and check the following commands, you will see that the container is initializing
+
 kubectl get deployment -n kube-system aws-load-balancer-controller
 
 kubectl get deploy -n kube-system
 
 kubectl get pods -n kube-system
+
+# Run the following commands to have the public DNS to the game (you might have to wait a couple of minutes until the content is accessible, just refresh the web page as needed until having a good display)
 
 kubectl get ingress -n game-2048
 
